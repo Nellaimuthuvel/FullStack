@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+        table.gridtable {
+        font-family: verdana,arial,sans-serif;
+        font-size:11px;
+        color:#333333;
+        border-width: 4px;
+        border-color: #666666;
+        border-collapse: collapse;
+      float: left;
+      padding: 15px;
+      margin-top: 25px;
+    width: 40%;
+    }
+    table.gridtable th {
+        border-width: 4px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #dedede;
+    }
+    table.gridtable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #666666;
+        background-color: #69e0d0;
+    }
+   
+    .split {
+      height: 100%;
+      width: 50%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+    .left {
+      left: 0;
+    /* background-color:lightgray;*/
+    }
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .right {
+  right: 0;
+  background-color: lightgoldenrodyellow;
+}
+
+    </style>
+    </head>
+
+   
+<body onload='test()'>
+   
+    <script>
+        function test()
+        {
+var div = document.getElementById('maindiv');   
+var divleft = document.createElement('div');
+divleft.setAttribute('class','split left')
+divleft.setAttribute('id','left')
+
+var x = document.getElementById("form_sample");
+var createform = document.createElement('form'); 
+createform.setAttribute("name", "myform"); 
+//createform.setAttribute("action", "#"); 
+//createform.setAttribute("method", "post"); 
+x.appendChild(createform);
+var heading = document.createElement('h2'); 
+heading.innerHTML = "Contact Form ";
+createform.appendChild(heading);
+
+var line = document.createElement('hr'); 
+createform.appendChild(line);
+
+
+
+var table= document.createElement('table');
+table.setAttribute('cellspacing','4');
+var tt = document.createElement("tbody");
+
+function addCell(tr, val) {
+    var td = document.createElement('td');
+
+    td.appendChild(val);
+
+    tr.appendChild(td);
+  }
+  function addCell1(tr, val,vals) {
+    var td = document.createElement('td');
+
+    td.appendChild(val);
+    td.appendChild(vals);
+
+
+    tr.appendChild(td);
+  }
+
+  function addRow( val_1, val_2) {
+    var tr = document.createElement('tr');
+
+    addCell(tr, val_1);
+    addCell(tr, val_2);
+tt.appendChild(tr);
+    table.appendChild(tt);
+  }
+
+  function radio( val_1, val_2,val_3) {
+    var tr = document.createElement('tr');
+
+    addCell(tr, val_1);
+    addCell1(tr, val_2,val_3);
+
+tt.appendChild(tr);
+    table.appendChild(tt);
+  }
+
+
+var namelabel = document.createElement('label');
+namelabel.setAttribute('for','dname');
+namelabel.innerHTML = "Your Name : ";
+
+var inputelement = document.createElement('input'); 
+inputelement.setAttribute("type", "text");
+inputelement.setAttribute("id", "dname");
+inputelement.setAttribute("name", "dname");
+addRow(namelabel,inputelement);
+
+
+var emaillabel = document.createElement('label'); 
+emaillabel.innerHTML = "Your Email : ";
+var emailelement = document.createElement('input');
+emailelement.setAttribute("type", "text");
+emailelement.setAttribute("name", "demail");
+addRow(emaillabel,emailelement);
+
+
+var pswdlabel = document.createElement('label'); 
+pswdlabel.innerHTML = "Your Pswd : ";
+var psswd = document.createElement('input');
+psswd.setAttribute("type", "text");
+psswd.setAttribute("name", "psswd");
+addRow(pswdlabel,psswd);
+
+var repswdlabel = document.createElement('label'); 
+repswdlabel.innerHTML = "Retype Pswd : ";
+
+var repsswd = document.createElement('input');
+repsswd.setAttribute("type", "text");
+repsswd.setAttribute("name", "repsswd");
+addRow(repswdlabel,repsswd);
+
+
+var countlabel = document.createElement('label'); 
+countlabel.innerHTML = "Country : ";
+var country = document.createElement('select');
+country.setAttribute("id","count")
+var x = document.createElement("OPTION");
+var x1 = document.createElement("OPTION");
+
+x.setAttribute("value", "India");
+var t = document.createTextNode("India");
+x.appendChild(t);
+country.appendChild(x);
+
+x1.setAttribute("value", "Australia");
+var t = document.createTextNode("Australia");
+x1.appendChild(t);
+country.appendChild(x1);
+addRow(countlabel,country);
+
+
+var statelabel = document.createElement('label'); 
+statelabel.innerHTML = "State : ";
+var state = document.createElement('select');
+state.setAttribute("id","stat")
+var x = document.createElement("OPTION");
+var x1 = document.createElement("OPTION");
+
+x.setAttribute("value", "Delhi");
+var t = document.createTextNode("Delhi");
+x.appendChild(t);
+state.appendChild(x);
+
+x1.setAttribute("value", "Gujarat");
+var t = document.createTextNode("Gujarat");
+x1.appendChild(t);
+state.appendChild(x1);
+addRow(statelabel,state);
+
+var citylabel = document.createElement('label'); 
+citylabel.innerHTML = "City : ";
+var city = document.createElement('select');
+city.setAttribute("id","city")
+var x = document.createElement("OPTION");
+var x1 = document.createElement("OPTION");
+
+x.setAttribute("value", "Ramnagar");
+var t = document.createTextNode("Ramnagar");
+x.appendChild(t);
+city.appendChild(x);
+
+x1.setAttribute("value", "DL-north");
+var t = document.createTextNode("DL-north");
+x1.appendChild(t);
+city.appendChild(x1);
+addRow(citylabel,city);
+
+
+
+var genderlabel = document.createElement('label'); 
+genderlabel.innerHTML = "Gender : ";
+var gender = document.createElement('input');
+gender.setAttribute("type","radio");
+gender.setAttribute("id","male");
+gender.setAttribute("name","gender");
+gender.setAttribute("value","male");
+
+var male = document.createElement('label');
+male.setAttribute("for","male") 
+male.innerHTML = "Male";
+
+
+radio(genderlabel,gender,male);
+
+
+
+
+
+createform.appendChild(table);
+
+
+var submitelement = document.createElement('input');
+submitelement.setAttribute("type", "submit");
+submitelement.setAttribute("name", "dsubmit");
+submitelement.setAttribute("value", "Submit");
+createform.appendChild(submitelement);
+divleft.appendChild(createform);
+var  centered = document.createElement('div');
+centered.setAttribute('class','centered')
+divleft.appendChild(centered);
+div.appendChild(divleft);
+
+        var divright = document.createElement('div');
+        divright.setAttribute('class','split right')
+        divright.appendChild(centered);
+        div.appendChild(divright);
+
+        }
+        </script>
+                <div class="testn" id="maindiv">
+                    <div id="form_sample"></div>
+                    </div>
+</body>
+
+</html>
